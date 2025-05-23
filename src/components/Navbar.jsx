@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from '../assets/Company logo .gif'; 
+import logo from '/assets/Company logo .gif'; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +21,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <img src={logo} alt="Logo" className="w-8 h-8" />
-          <span className="text-lg font-bold text-yellow-300">Rbrickks</span>
+          <span className="text-lg font-bold text-yellow-300">Rbrickks Technology</span>
         </div>
 
         {/* Hamburger Menu for Mobile */}

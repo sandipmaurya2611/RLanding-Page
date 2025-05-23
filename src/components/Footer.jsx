@@ -9,7 +9,7 @@ import {
   FaEnvelope
 } from 'react-icons/fa';
 import { Shield, Building2, Award } from 'lucide-react';
-import companyLogo from '../assets/companylogo.png'; // Update path if needed
+import companyLogo from '../../public/assets/companylogo.png'; // Update path if needed
 
 const Footer = () => {
   return (
@@ -20,7 +20,7 @@ const Footer = () => {
         <div>
           <div className="flex items-center gap-2 mb-4">
             <img src={companyLogo} alt="Rbrickks Logo" className="w-8 h-8" />
-            <span className="text-xl font-bold text-yellow-400">Rbrickks</span>
+            <span className="text-xl font-bold text-yellow-400">Rbrickks Technology</span>
           </div>
           <p className="text-sm text-gray-400 mb-4">
             Rbrickks Technology delivers cutting-edge IT services that transform your business digitally.
