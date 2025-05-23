@@ -68,20 +68,20 @@ const services = [
 
 // Technologies Array
 const technologies = [
-  { name: "JavaScript", icon: "../../src/assets/icons8-javascript-96.png" },
-  { name: "Python", icon: "../../src/assets/icons8-python-100.png" },
-  { name: "React", icon: "../../src/assets/icons8-react-80.png" },
-  { name: "Node.js", icon: "../../src/assets/icons8-nodejs-48.png" },
-  { name: "AWS", icon: "../../src/assets/icons8-aws-96.png" },
-  { name: "Docker", icon: "../../src/assets/icons8-docker-96.png" },
-  { name: "MongoDB", icon: "../../src/assets/icons8-mongodb-96.png" },
-  { name: "TypeScript", icon: "../../src/assets/icons8-typescript-96.png" },
-  { name: "Git", icon: "../../src/assets/icons8-github-logo-96.png" },
-  { name: "Flutter", icon: "../../src/assets/icons8-flutter-logo-96.png" },
-  { name: "Kotlin", icon: "../../src/assets/icons8-kotlin-96.png" },
-  { name: "Swift", icon: "../../src/assets/icons8-swift-96.png" },
-  { name: "TensorFlow", icon: "../../src/assets/icons8-tensorflow-96.png" },
-  { name: "Firebase", icon: "../../src/assets/icons8-firebase-96.png" },
+  { name: "JavaScript", icon: "../../public/assets/icons8-javascript-96.png" },
+  { name: "Python", icon: "../../public/assets/icons8-python-100.png" },
+  { name: "React", icon: "../../public/assets/icons8-react-96.png" },
+  { name: "Node.js", icon: "../../public/assets/icons8-nodejs-96.png" },
+  { name: "AWS", icon: "../../public/assets/icons8-aws-96.png" },
+  { name: "Docker", icon: "../../public/assets/icons8-docker-96.png" },
+  { name: "MongoDB", icon: "../../public/assets/icons8-mongodb-96.png" },
+  { name: "TypeScript", icon: "../../public/assets/icons8-typescript-96.png" },
+  { name: "Git", icon: "../../public/assets/icons8-git-96.png" },
+  { name: "Flutter", icon: "../../public/assets/icons8-flutter-96.png" },
+  { name: "Kotlin", icon: "../../public/assets/icons8-kotlin-96.png" },
+  { name: "Swift", icon: "../../public/assets/icons8-swift-96.png" },
+  { name: "TensorFlow", icon: "../../public/assets/icons8-tensorflow-96.png" },
+  { name: "Firebase", icon: "../../public/assets/icons8-firebase-96.png" },
 ];
 
 function Home() {
