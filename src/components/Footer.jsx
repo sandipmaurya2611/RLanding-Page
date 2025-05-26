@@ -9,7 +9,7 @@ import {
   FaEnvelope
 } from 'react-icons/fa';
 import { Shield, Building2, Award } from 'lucide-react';
-import companyLogo from '../../public/assets/companylogo.png'; // Update path if needed
+import companyLogo from '/assets/companylogo.png'; // Update path if needed
 
 const Footer = () => {
   return (

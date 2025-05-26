@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from '/assets/Company logo .gif'; 
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar2 = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState(" ");
 
@@ -49,22 +49,23 @@ const Navbar = () => {
 
         {/* Navigation Links - Desktop */}
         <div className="hidden md:flex items-center space-x-6">
-          <a href="/Home" onClick={() => handleLinkClick("Home")} className={getLinkClass("Home")}>Home</a>
-          <a href="/Portfolio" onClick={() => handleLinkClick("Portfolio")} className={getLinkClass("Portfolio")}>Portfolio</a>
+          <a href="/Home" onClick={() => handleLinkClick("About")} className={getLinkClass("Home")}>Home</a>
+          <a href="/Portfolio" onClick={() => handleLinkClick("Technologies")} className={getLinkClass("Technologies")}>Technologies</a>
           <a href="/Testimonials" onClick={() => handleLinkClick("Testimonials")} className={getLinkClass("Testimonials")}>Testimonials</a>
-          <a href="/ContactPage" onClick={() => handleLinkClick("ContactPage")} className={getLinkClass("ContactPage")}>Contact</a>
+          {/* <a href="/ContactPage" onClick={() => handleLinkClick("ContactPage")} className={getLinkClass("ContactPage")}>Contact</a> */}
 
           {/* ✅ More Services Button */}
           <Link
-            to=""
+            to="/Home"
             onClick={() => handleLinkClick("MoreServices")}
             className="text-white text-sm font-medium bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
           >
-Get Start          </Link>
+            More Services
+          </Link>
         </div>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default Navbar2;

@@ -1,6 +1,13 @@
-import React, { useState } from 'react';
-import { FaExternalLinkAlt, FaReact, FaNodeJs, FaAngular, FaPhp, FaJava, FaPython, FaAws, FaVuejs, FaWordpress } from 'react-icons/fa';
-import { SiMongodb, SiMysql, SiBootstrap, SiExpress, SiSpringboot, SiPostgresql, SiDjango, SiFirebase, SiTailwindcss, SiNextdotjs, SiJquery, SiJavascript } from 'react-icons/si';
+import React, { useState, useEffect } from 'react';
+import { FaExternalLinkAlt, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import {
+  FaReact, FaNodeJs, FaAngular, FaPhp, FaJava, FaPython, FaAws,
+  FaVuejs, FaWordpress
+} from 'react-icons/fa';
+import {
+  SiMongodb, SiMysql, SiBootstrap, SiExpress, SiSpringboot, SiPostgresql,
+  SiDjango, SiFirebase, SiTailwindcss, SiNextdotjs, SiJquery, SiJavascript
+} from 'react-icons/si';
 
 const techIcons = {
   React: <FaReact />,
@@ -26,6 +33,7 @@ const techIcons = {
   JavaScript: <SiJavascript />,
 };
 
+// Import your projects array here
 const projects = [
   {
     title: "Lokhande Sai Dental",
@@ -39,68 +47,221 @@ const projects = [
     category: "Healthcare",
     description: "Doctor listing and appointment booking platform for healthcare professionals in Bharuch.",
     tech: ["PHP", "MySQL", "Bootstrap"],
-    url: " https://www.practo.com/Bharuch/doctor",
+    url: "https://www.practo.com/Bharuch/doctors",
   },
   {
     title: "Aakash Institute",
     category: "Education",
     description: "Educational platform for students preparing for competitive exams with course management.",
     tech: ["Angular", "NodeJs", "MongoDB", "Express"],
-    url: " https://www.Aakash.ac.in/",
+    url: "https://www.aakash.ac.in/",
   },
   {
     title: "The Ritz-Carlton",
     category: "Hospitality",
     description: "Luxury hotel chain website with booking system and property showcases.",
     tech: ["React", "Java", "SpringBoot", "PostgreSQL"],
-    url: " https://www.ritzcarlton.com/",
+    url: "https://www.ritzcarlton.com/",
   },
   {
     title: "Coursera",
     category: "Education",
     description: "Online learning platform with thousands of courses from top universities and companies.",
     tech: ["React", "Python", "Django", "AWS"],
-    url: " https://www.coursera.org/",
+    url: "https://www.coursera.org/",
   },
   {
     title: "Demech India",
     category: "Business",
     description: "Manufacturing company website with product catalog and inquiry system.",
-    tech: ["Wordpress", "PHP", "MySQL", "JQuery"],
-    url: " https://www.demechindia.com/",
+    tech: ["WordPress", "PHP", "MySQL", "jQuery"],
+    url: "https://www.demechindia.com/",
   },
   {
     title: "Business Class",
     category: "Business",
     description: "Premium travel service platform for business travelers with booking and management.",
     tech: ["VueJs", "NodeJs", "MongoDB", "Express"],
-    url: " https://www.businessclass.com/",
+    url: "https://www.businessclass.com/",
   },
   {
     title: "SE Associates",
     category: "Business",
     description: "Professional services firm website with portfolio and client management.",
     tech: ["React", "Firebase", "TailwindCSS", "NextJs"],
-    url: " https://www.seassociates.com/",
+    url: "https://www.seassociates.in/",
   },
   {
     title: "Phoenix Mecano",
     category: "Business",
     description: "Industrial components manufacturer website with product catalog and distributor locator.",
-    tech: ["Wordpress", "PHP", "MySQL", "JavaScript"],
-    url: "https://www.phoenixmecano.com/",
+    tech: ["WordPress", "PHP", "MySQL", "JavaScript"],
+    url: "https://www.phoenixmecano.co.in/",
+  },
+  {
+    title: "India Journey",
+    category: "Travel",
+    description: "Travel agency site offering custom holiday packages, visa services, and bookings.",
+    tech: ["WordPress", "PHP", "Bootstrap"],
+    url: "https://www.indiajourney.com/",
+  },
+  {
+    title: "Girikand Travels",
+    category: "Travel",
+    description: "Tours and travels portal with international/domestic packages, flight bookings, and hotels.",
+    tech: ["PHP", "MySQL", "JavaScript"],
+    url: "https://www.girikand.com/",
+  },
+  {
+    title: "Roetell Glass Packaging",
+    category: "Manufacturing",
+    description: "Glass packaging manufacturer with product catalog and B2B features.",
+    tech: ["React", "Next.js", "Node.js"],
+    url: "https://roetell.com/",
+  },
+  {
+    title: "Chemco Group",
+    category: "Industrial",
+    description: "Plastic packaging and manufacturing company with product showcase and client portal.",
+    tech: ["PHP", "Laravel", "MySQL"],
+    url: "https://www.chemcogroup.com/",
+  },
+  {
+    title: "Baafila Travels",
+    category: "Travel",
+    description: "Travel booking website for domestic and international holiday packages.",
+    tech: ["WordPress", "PHP", "Bootstrap"],
+    url: "https://baafilatravels.com/",
+  },
+    //  Extra Projects
+  {
+    title: "QuickFit Workout App",
+    category: "App Development",
+    description: "A comprehensive fitness tracking app offering workouts, meal planning, and progress tracking.",
+    tech: ["React Native", "Firebase", "Redux"],
+    url: "https://quickfithealthclubs.com.au/workouts-app",
+  },
+  {
+    title: "Medisafe Pill Reminder",
+    category: "App Development",
+    description: "An award-winning medication reminder and tracker app to manage prescriptions effectively.",
+    tech: ["Flutter", "SQLite", "Firebase"],
+    url: "https://play.google.com/store/apps/details?id=com.medisafe.android.client",
+  },
+
+  // Web Development
+  {
+    title: "StyleNest",
+    category: "Web Development",
+    description: "A fashion and lifestyle platform offering the latest trends, beauty tips, and shopping guides.",
+    tech: ["React", "Node.js", "MongoDB", "TailwindCSS"],
+    url: "https://www.stylenest.co.uk/",
+  },
+  {
+    title: "Open LMS",
+    category: "Web Development",
+    description: "An open-source learning management system designed for effective online education.",
+    tech: ["Next.js", "Express.js", "PostgreSQL"],
+    url: "https://www.openlms.net/open-lms-edu/",
+  },
+
+  // Android
+  {
+    title: "TravelMate",
+    category: "Android",
+    description: "A travel app providing smart content, maps, and guides to explore cities efficiently.",
+    tech: ["Kotlin", "Firebase", "Retrofit"],
+    url: "https://play.google.com/store/apps/details?id=tech.travelmate.travelmate",
+  },
+  {
+    title: "Kaspersky Safe Kids",
+    category: "Android",
+    description: "A parental control app ensuring children's safety online with screen time management and real-time alerts.",
+    tech: ["Java", "Google Maps API", "Firebase"],
+    url: "https://www.kaspersky.com/safe-kids/android",
+  },
+
+  // AI/ML Services
+  {
+    title: "Google Cloud Vision AI",
+    category: "AI/ML Services",
+    description: "A powerful image recognition platform enabling developers to derive insights from images and videos.",
+    tech: ["Python", "TensorFlow", "OpenCV"],
+    url: "https://cloud.google.com/vision",
+  },
+  {
+    title: "SmartBots AI Chatbot",
+    category: "AI/ML Services",
+    description: "An AI-powered chatbot service enhancing customer engagement through automated support.",
+    tech: ["Python", "NLTK", "Dialogflow"],
+    url: "https://www.smartbots.ai/",
+  },
+
+  // Security Software
+  {
+    title: "Broadcom Endpoint Security",
+    category: "Security Software",
+    description: "Comprehensive endpoint protection solutions safeguarding devices against advanced threats.",
+    tech: ["C++", "Python", "Snort"],
+    url: "https://www.broadcom.com/products/cybersecurity/endpoint",
+  },
+  {
+    title: "ShieldPass Password Manager",
+    category: "Security Software",
+    description: "A secure password management app ensuring safe storage and retrieval of credentials.",
+    tech: ["Java", "Spring Boot", "PostgreSQL"],
+    url: "https://play.google.com/store/apps/details?id=com.sandeep03edu.passwordmanager.android",
+  },
+
+  // Cloud Computing
+  {
+    title: "MuleSoft CloudHub",
+    category: "Cloud Computing",
+    description: "A cloud-based integration platform enabling seamless application and service orchestration.",
+    tech: ["AWS", "Docker", "Kubernetes", "React"],
+    url: "https://docs.mulesoft.com/cloudhub/cloudhub-faq",
+  },
+  {
+    title: "AWS Lambda",
+    category: "Cloud Computing",
+    description: "A serverless compute service allowing code execution without provisioning or managing servers.",
+    tech: ["AWS Lambda", "Node.js", "S3", "DynamoDB"],
+    url: "https://aws.amazon.com/lambda/",
   },
 ];
-
-const categories = ["All", "Healthcare", "Education", "Hospitality", "Business"];
+const categories = ["All", "Healthcare", "Education", "Hospitality", "Business", "Travel", "App Development", "Web Development", "Android", "AI/ML Services", "Security Software", "Cloud Computing"];
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 6;
 
   const filteredProjects =
     selectedCategory === "All"
       ? projects
       : projects.filter((project) => project.category === selectedCategory);
+
+  const indexOfLast = currentPage * projectsPerPage;
+  const indexOfFirst = indexOfLast - projectsPerPage;
+  const paginatedProjects = filteredProjects.slice(indexOfFirst, indexOfLast);
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+
+  const handleCategoryChange = (cat) => {
+    setSelectedCategory(cat);
+    setCurrentPage(1);
+  };
+
+  const goToPrevious = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const goToNext = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
 
   return (
     <section className="min-h-screen bg-black text-white px-6 py-16">
@@ -116,7 +277,7 @@ const Portfolio = () => {
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              onClick={() => handleCategoryChange(cat)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 selectedCategory === cat
                   ? "bg-blue-500 text-white shadow-md"
@@ -128,15 +289,14 @@ const Portfolio = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, idx) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+          {paginatedProjects.map((project, idx) => (
             <div
               key={idx}
               className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl shadow-lg hover:shadow-purple-600 transition duration-300"
             >
               <h3 className="text-xl font-semibold text-blue-400 mb-2">{project.title}</h3>
               <p className="text-gray-300 text-sm mb-4">{project.description}</p>
-
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map((tech, i) => (
                   <div
@@ -147,7 +307,6 @@ const Portfolio = () => {
                   </div>
                 ))}
               </div>
-
               <a
                 href={project.url}
                 target="_blank"
@@ -158,6 +317,33 @@ const Portfolio = () => {
               </a>
             </div>
           ))}
+        </div>
+
+        {/* Arrow Pagination */}
+        <div className="flex justify-center items-center gap-4 mt-6">
+          <button
+            onClick={goToPrevious}
+            disabled={currentPage === 1}
+            className={`p-2 rounded-full border-2 ${
+              currentPage === 1 ? "border-gray-600 text-gray-600 cursor-not-allowed" : "border-blue-500 text-white hover:bg-blue-600"
+            }`}
+          >
+            <FaArrowLeft />
+          </button>
+
+          <span className="text-gray-400 text-sm">
+            Page {currentPage} of {totalPages}
+          </span>
+
+          <button
+            onClick={goToNext}
+            disabled={currentPage === totalPages}
+            className={`p-2 rounded-full border-2 ${
+              currentPage === totalPages ? "border-gray-600 text-gray-600 cursor-not-allowed" : "border-blue-500 text-white hover:bg-blue-600"
+            }`}
+          >
+            <FaArrowRight />
+          </button>
         </div>
       </div>
     </section>
