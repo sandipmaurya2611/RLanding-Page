@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   FaMobileAlt,
   FaAndroid,
@@ -57,8 +57,7 @@ const apps = [
     url: "https://play.google.com/store/apps/details?id=app.evlop.angionline",
     category: "Fashion",
     rating: 5,
-    testimonial:
-      "Custom clothing store app tailored for fashion lovers.",
+    testimonial: "Custom clothing store app tailored for fashion lovers.",
     tech: ["React Native", "Node.js", "MongoDB"],
   },
   {
@@ -73,11 +72,28 @@ const apps = [
 ];
 
 export default function AppsPage() {
+  const aboutRef = useRef(null);
+  const techRef = useRef(null);
+  const appsRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
-    <div className="bg-black min-h-screen text-white font-sans px-4 pt-24">
-      {/* Hero */}
-      <div className="text-center mb-12">
-        <h2 className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 text-transparent bg-clip-text mb-4">Mobile Apps</h2>
+    <div className="bg-black min-h-screen text-white font-sans relative">
+    
+      <nav className="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-90 z-50 flex justify-center gap-6 py-4 shadow-md">
+        <button onClick={() => scrollToSection(aboutRef)} className="text-white hover:text-purple-400 transition">About</button>
+        <button onClick={() => scrollToSection(techRef)} className="text-white hover:text-purple-400 transition">Tech Stack</button>
+        <button onClick={() => scrollToSection(appsRef)} className="text-white hover:text-purple-400 transition">Apps</button>
+      </nav>
+
+ 
+      <div ref={aboutRef} className="pt-24 text-center mb-12 px-4">
+        <h2 className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 text-transparent bg-clip-text mb-4">
+          Mobile Apps
+        </h2>
         <p className="text-gray-400 max-w-xl mx-auto">
           Discover the mobile applications built with modern cross-platform and native technologies.
         </p>
@@ -86,12 +102,15 @@ export default function AppsPage() {
         </div>
       </div>
 
-      {/* Tech Stack Section */}
-      <section className="py-12 bg-gradient-to-b from-black to-gray-900">
+
+      <section ref={techRef} className="py-15 bg-gradient-to-b from-black to-gray-900">
         <h3 className="text-3xl font-bold text-center mb-10">App Tech Stack</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
           {appTechStack.map((item, index) => (
-            <div key={index} className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+            <div
+              key={index}
+              className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+            >
               {item.icon}
               <h4 className="text-xl font-semibold text-lime-300 mb-2">{item.title}</h4>
               <p className="text-gray-300 text-sm mb-2">{item.desc}</p>
@@ -105,17 +124,22 @@ export default function AppsPage() {
         </div>
       </section>
 
-      {/* Apps Section */}
-      <section className="py-12">
+  
+      <section ref={appsRef} className="py-15 px-4">
         <h3 className="text-3xl font-bold text-center mb-10">Apps We Built!!</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {apps.map((app, index) => (
-            <div key={index} className="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition hover:scale-105">
+            <div
+              key={index}
+              className="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition hover:scale-105"
+            >
               <h4 className="text-xl font-semibold text-lime-300 mb-1">{app.name}</h4>
               <p className="text-sm text-gray-400 italic mb-1">{app.category}</p>
               <p className="text-gray-300 text-sm mb-3">{app.testimonial}</p>
               <div className="flex items-center gap-1 mb-3 text-yellow-400">
-                {[...Array(app.rating)].map((_, i) => <FaStar key={i} />)}
+                {[...Array(app.rating)].map((_, i) => (
+                  <FaStar key={i} />
+                ))}
               </div>
               <div className="flex flex-wrap gap-2 text-sm text-purple-400 mb-4">
                 {app.tech.map((t, i) => (

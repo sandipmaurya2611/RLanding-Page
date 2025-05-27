@@ -8,7 +8,7 @@ import {
 import { FiPhoneCall } from "react-icons/fi";
 import { BsWhatsapp } from "react-icons/bs";
 
-// Technologies Section
+
 const techItems = [
   {
     title: "Programming Languages Used",

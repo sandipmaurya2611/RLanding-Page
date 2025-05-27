@@ -75,7 +75,6 @@ export default function SoftwarePage() {
   return (
     <div className="bg-black min-h-screen text-white font-sans relative">
 
-      {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-90 z-50 flex justify-center gap-6 py-4 shadow-md">
         <button onClick={() => scrollToSection(aboutRef)} className="text-white hover:text-purple-400 transition">About Us</button>
         <button onClick={() => scrollToSection(techRef)} className="text-white hover:text-purple-400 transition">Technologies</button>
@@ -84,10 +83,10 @@ export default function SoftwarePage() {
         
       </nav>
 
-      {/* Add top padding for navbar space */}
+   
       <div className="pt-20">
-        {/* Hero Section */}
-        <div className="flex flex-col items-center justify-center text-center py-20 px-4">
+
+        <div className="flex flex-col items-center justify-center text-center py-6 px-4">
           <h2 className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 text-transparent bg-clip-text mb-4">Software's</h2>
           <p className="text-gray-400 max-w-xl">
             Rbrickks Technology is a modern IT solutions provider delivering cutting-edge digital services to transform businesses.
@@ -97,8 +96,8 @@ export default function SoftwarePage() {
           </div>
         </div>
 
-        {/* About Section */}
-        <section ref={aboutRef} className="px-6 py-12 text-center">
+     
+        <section ref={aboutRef} className="px-6 py-15 text-center">
           <h3 className="text-3xl font-bold mb-6">About Us</h3>
           <p className="text-gray-400 max-w-3xl mx-auto leading-relaxed">
             <strong>Rbrickks Technology Pvt. Ltd.</strong>, founded on 13th September 2022 by Mr. Rohan Prashant Kolhe, is a Pune-based IT company committed to connecting people with the digital future. With the tagline
@@ -108,8 +107,7 @@ export default function SoftwarePage() {
           </p>
         </section>
 
-        {/* Services Section */}
-        <section ref={techRef} className="px-6 py-12 bg-gradient-to-b from-black to-gray-900">
+        <section ref={techRef} className="px-6 py-15 ">
           <h3 className="text-3xl font-bold text-center mb-10">Technologies</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {techItems.map((item) => (
@@ -123,8 +121,8 @@ export default function SoftwarePage() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section ref={testimonialsRef} className="px-6 py-12">
+    
+        <section ref={testimonialsRef} className="px-6 py-15">
           <h3 className="text-3xl font-bold text-center mb-10">Testimonials</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((project, index) => (
@@ -136,7 +134,7 @@ export default function SoftwarePage() {
                 </div>
               </div>
             ))}
-            {/* More Services */}
+   
             <a
               href="/services"
               className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl shadow-lg border border-lime-300 hover:scale-105 hover:border-purple-400 hover:shadow-purple-500/40 transition-all flex flex-col justify-between"
@@ -153,7 +151,7 @@ export default function SoftwarePage() {
         </section>
       </div>
 
-      {/* Floating Contact Icons */}
+
       <div className="fixed bottom-6 right-6 flex flex-col gap-4">
         <a href="tel:+1234567890" className="bg-green-600 p-3 rounded-full shadow-lg">
           <FiPhoneCall className="text-white text-xl" />
