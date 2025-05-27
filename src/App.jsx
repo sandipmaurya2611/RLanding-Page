@@ -11,6 +11,8 @@ import Testimonials from './pages/Testimonials';
 import Software from './pages/Software';
 import Navbar from './components/Navbar'; // or Navbar2 if you're using that
 import Footer from './components/Footer';
+import Webapp from './pages/Webapp';
+import Mobapp from './pages/Mobapp';
 
 function AppContent() {
   const location = useLocation();
@@ -27,6 +29,8 @@ function AppContent() {
         <Route path="/Portfolio" element={<Portfolio />} />
         <Route path="/Testimonials" element={<Testimonials />} />
         <Route path="/Software" element={<Software />} />
+         <Route path="/Webapp" element={<Webapp />} />
+         <Route path="/Mobapp" element={<Mobapp />} />
       </Routes>
       <Footer />
     </>
