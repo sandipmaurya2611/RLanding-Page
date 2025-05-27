@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    message: '',
-  });
+  const form = useRef();
+  const [status, setStatus] = useState('');
 
   const contactInfo = {
     address: `Rbrickks Technology
@@ -17,34 +14,24 @@ Balewadi High Street, Pune`,
     email: 'rbrickkstechnologyprivatelim@gmail.com',
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
+    setStatus('Sending...');
 
-    try {
-      const res = await fetch("http://localhost:5000/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    emailjs
+      .sendForm('service_m8hoob3', 'template_i4fc57k', form.current, {
+        publicKey: '1m5aPROiv77M3j6XU',
+      })
+      .then(
+        () => {
+          setStatus('Message sent successfully!');
+          form.current.reset();
         },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        alert("Message sent successfully!");
-        setFormData({ name: "", phone: "", email: "", message: "" });
-      } else {
-        alert("Failed to send message.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Something went wrong. Please try again later.");
-    }
+        (error) => {
+          console.error('Failed to send message:', error.text);
+          setStatus('Failed to send message.');
+        }
+      );
   };
 
   return (
@@ -53,30 +40,37 @@ Balewadi High Street, Pune`,
         <h1 className="text-center text-4xl font-bold mb-12 text-purple-500">Contact Us</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Column: Contact Form */}
+          {/* Contact Form */}
           <div className="bg-gray-800 p-8 rounded-xl shadow-lg w-full">
             <h2 className="text-2xl font-semibold mb-6 text-purple-400">Send a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {['name', 'phone', 'email'].map((field) => (
-                <input
-                  key={field}
-                  type={field === 'email' ? 'email' : 'text'}
-                  name={field}
-                  value={formData[field]}
-                  onChange={handleChange}
-                  placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                  className="w-full px-4 py-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 outline-none"
-                  required
-                />
-              ))}
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
+              <input
+                type="text"
+                name="user_name"
+                placeholder="Name"
+                required
+                className="w-full px-4 py-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 outline-none"
+              />
+              <input
+                type="text"
+                name="user_phone"
+                placeholder="Phone Number"
+                required
+                className="w-full px-4 py-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 outline-none"
+              />
+              <input
+                type="email"
+                name="user_email"
+                placeholder="Email"
+                required
+                className="w-full px-4 py-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 outline-none"
+              />
               <textarea
                 name="message"
-                value={formData.message}
-                onChange={handleChange}
                 rows="4"
                 placeholder="Your message..."
-                className="w-full px-4 py-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 outline-none"
                 required
+                className="w-full px-4 py-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 outline-none"
               />
               <button
                 type="submit"
@@ -84,12 +78,12 @@ Balewadi High Street, Pune`,
               >
                 Send Message
               </button>
+              {status && <p className="text-sm text-center text-purple-300 mt-2">{status}</p>}
             </form>
           </div>
 
-          {/* Right Column: Info + Map */}
+          {/* Contact Info & Map */}
           <div className="flex flex-col justify-between gap-6">
-            {/* Contact Info */}
             <div className="bg-gray-800 p-8 rounded-xl shadow-lg space-y-6 w-full">
               <h2 className="text-2xl font-semibold mb-4 text-purple-400">Our Contact Info</h2>
               <div className="flex items-start gap-4">
@@ -106,7 +100,6 @@ Balewadi High Street, Pune`,
               </div>
             </div>
 
-            {/* Map */}
             <div className="rounded-xl overflow-hidden shadow-lg w-full h-64 md:h-72">
               <iframe
                 className="w-full h-full"
