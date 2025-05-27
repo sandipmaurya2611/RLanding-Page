@@ -55,12 +55,12 @@ const Navbar = () => {
           <a href="/ContactPage" onClick={() => handleLinkClick("ContactPage")} className={getLinkClass("ContactPage")}>Contact</a>
 
           {/* ✅ More Services Button */}
-          <Link
+          {/* <Link
             to=""
             onClick={() => handleLinkClick("MoreServices")}
             className="text-white text-sm font-medium bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
           >
-Get Start          </Link>
+Get Start          </Link> */}
         </div>
       </div>
     </nav>
