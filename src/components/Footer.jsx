@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   FaFacebookF,
   FaTwitter,
@@ -43,15 +44,31 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Quick Links */}
-        <div>
-          <h3 className="text-blue-500 font-semibold mb-4 text-lg">Quick Links</h3>
-          <ul className="space-y-2 text-sm text-gray-300">
-            {['Home', 'Portfolio', 'Testimonials', 'Contact'].map(link => (
-              <li key={link} className="hover:text-white cursor-pointer">{link}</li>
-            ))}
-          </ul>
-        </div>
+{/* Quick Links */}
+<div>
+  <h3 className="text-blue-500 font-semibold mb-4 text-lg">Quick Links</h3>
+  <ul className="space-y-2 text-sm text-gray-300">
+    {[
+      { name: 'Home', path: '/' },
+      { name: 'Portfolio', path: '/portfolio' },
+      { name: 'Testimonials', path: '/testimonials' },
+      { name: 'Contact', path: '/ContactPage' },
+    ].map(({ name, path }) => (
+      <li key={name}>
+        <NavLink
+          to={path}
+          className={({ isActive }) =>
+            `cursor-pointer hover:text-white ${
+              isActive ? 'text-white font-semibold underline' : ''
+            }`
+          }
+        >
+          {name}
+        </NavLink>
+      </li>
+    ))}
+  </ul>
+</div>
 
         {/* Certifications */}
         <div className="flex flex-col h-full">
@@ -76,28 +93,28 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Contact Us */}
-        <div>
-          <h3 className="text-blue-500 font-semibold mb-4 text-lg">Contact Us</h3>
-          <ul className="space-y-3 text-sm text-gray-300">
-            <li className="flex items-start gap-2">
-              <FaMapMarkerAlt className="text-blue-400 mt-1" />
-              <span>
-                Rbrickks Technology<br />
-                #406, 4th Floor, V18, Opp. Cummins Campus,<br />
-                Balewadi High Street, Pune
-              </span>
-            </li>
-            <li className="flex items-center gap-2 hover:text-white">
-              <FaPhoneAlt className="text-blue-400" />
-              +91 7249400874
-            </li>
-            <li className="flex items-center gap-2 hover:text-white">
-              <FaEnvelope className="text-blue-400" />
-              rbrickkstechnologyprivatelim@gmail.com
-            </li>
-          </ul>
-        </div>
+       <div>
+  <h3 className="text-blue-500 font-semibold mb-4 text-lg">Contact Us</h3>
+  <ul className="space-y-4 text-sm text-gray-300">
+    <li className="flex items-start gap-3">
+      <FaMapMarkerAlt className="text-blue-400 mt-1" />
+      <div>
+        <span className="font-bold">Head Office:</span><br />
+        Rbrickks Technology<br />
+        #406, 4th Floor, V18, Opp. Cummins Campus,<br />
+        Balewadi High Street, Pune
+      </div>
+    </li>
+    <li className="flex items-center gap-3 hover:text-white">
+      <FaPhoneAlt className="text-blue-400" />
+      <span>+91 7249400874</span>
+    </li>
+    <li className="flex items-center gap-3 hover:text-white">
+      <FaEnvelope className="text-blue-400" />
+      <span>rbrickkstechnologyprivatelim@gmail.com</span>
+    </li>
+  </ul>
+</div>
 
       </div>
 
