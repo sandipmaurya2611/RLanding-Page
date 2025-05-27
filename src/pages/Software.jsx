@@ -229,7 +229,7 @@ export default function SoftwarePage() {
         </section>
       </div>
 
-      {/* Floating Contact Icons */}
+
       <div className="fixed bottom-6 right-6 flex flex-col gap-4">
         <a href="tel:+1234567890" className="bg-green-600 p-3 rounded-full shadow-lg">
           <FiPhoneCall className="text-white text-xl" />
