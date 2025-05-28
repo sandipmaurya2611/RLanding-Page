@@ -156,15 +156,41 @@ const Navbar = () => {
           >
             Contact
           </a>
+          <Link
+            to="/Software"
+            onClick={() => handleLinkClick("Software")}
+            className="w-fit text-center bg-gradient-to-r from-purple-500 to-cyan-400 px-3 py-1.5 text-sm rounded-full text-white font-medium shadow hover:scale-105 transition-transform
+"
+          >
+            Software
+          </Link>
+          <Link
+            to="/Webapp"
+            onClick={() => handleLinkClick("Web application")}
+            className="w-fit text-center bg-gradient-to-r from-purple-500 to-cyan-400 px-3 py-1.5 text-sm rounded-full text-white font-medium shadow hover:scale-105 transition-transform
+"
+          >
+            Web Application
+          </Link>
+
+         <Link
+            to="/Mobapp"
+            onClick={() => handleLinkClick("Mobapp")}
+            className="w-fit text-center bg-gradient-to-r from-purple-500 to-cyan-400 px-3 py-1.5 text-sm rounded-full text-white font-medium shadow hover:scale-105 transition-transform
+"
+          >
+            Mobile Apps
+          </Link>
 
           {/* Mobile "Get Start" Button */}
-          <Link
+          {/* <Link
             to=""
             onClick={() => handleLinkClick("MoreServices")}
-            className="w-full text-center bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full text-white font-medium shadow-md hover:scale-105 transition-transform"
+            className="w-fit text-center bg-gradient-to-r from-purple-500 to-cyan-400 px-3 py-1.5 text-sm rounded-full text-white font-medium shadow hover:scale-105 transition-transform
+"
           >
             Get Start
-          </Link>
+          </Link> */}
         </div>
       )}
     </nav>
