@@ -88,13 +88,13 @@ function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-[#0e0e0e] flex flex-col items-center justify-center text-white px-4 pt-[100px] text-center relative overflow-hidden min-h-screen">
+      <section className="bg-[#0e0e0e] flex flex-col items-center justify-center text-white px-4 pt-[100px] text-center relative overflow-hidden mt-12">
         {/* Background Glow Effects */}
         <div className="absolute -z-10 w-full h-full top-0 left-0">
           <div className="absolute w-96 h-96 bg-purple-600 opacity-30 blur-3xl rounded-full top-0 left-1/3 transform -translate-x-1/2"></div>
           <div className="absolute w-96 h-96 bg-cyan-500 opacity-20 blur-2xl rounded-full bottom-0 right-1/4"></div>
         </div>
-<div className="overflow-visible pb-6">
+<div className="overflow-visible ">
   <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.3] bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text drop-shadow-sm">
     Rbrickks Technology
   </h1>
