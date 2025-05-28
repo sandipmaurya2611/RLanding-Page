@@ -125,10 +125,10 @@ export default function Websites() {
 
         {menuOpen && (
           <div className="md:hidden px-6 pb-4 space-y-3">
-            <button onClick={() => scrollToSection(aboutRef)} className="block w-full text-left hover:text-purple-400">About</button>
-            <button onClick={() => scrollToSection(techRef)} className="block w-full text-left hover:text-purple-400">Technologies</button>
-            <button onClick={() => scrollToSection(projectsRef)} className="block w-full text-left hover:text-purple-400">Projects</button>
-            <button onClick={() => scrollToSection(contactRef)} className="block w-full text-left hover:text-purple-400">Contact</button>
+            <button onClick={() => scrollToSection(aboutRef)} className="block w-full text-middle hover:text-purple-400">About</button>
+            <button onClick={() => scrollToSection(techRef)} className="block w-full text-middle hover:text-purple-400">Technologies</button>
+            <button onClick={() => scrollToSection(projectsRef)} className="block w-full text-middle hover:text-purple-400">Projects</button>
+            <button onClick={() => scrollToSection(contactRef)} className="block w-full text-middle hover:text-purple-400">Contact</button>
             <a href="/" className="inline-block bg-gradient-to-r from-purple-400 to-cyan-400 px-6 py-2 rounded-full text-white font-semibold w-full text-center">Get More Services</a>
           </div>
         )}
@@ -142,9 +142,11 @@ export default function Websites() {
         </div>
 
         <section ref={aboutRef} className="px-6 py-20 text-center">
-          <h3 className="text-3xl font-bold mb-6">About</h3>
+          <h3 className="text-3xl font-bold mb-6">About Us</h3>
           <p className="text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            <strong>Rbrickks Technology Pvt. Ltd.</strong> is a Pune-based IT company committed to building digital-first businesses. Founded on <strong>13th September 2022</strong> by <strong>Mr. Rohan Prashant Kolhe</strong>, our mission is to build sleek, functional, and scalable digital products, with a strong focus on websites and cloud applications.
+            <strong>Rbrickks Technology Pvt. Ltd.</strong>, founded on 13th September 2022 by Mr. Rohan Prashant Kolhe, is a Pune-based IT company committed to connecting people with the digital future. With the tagline <span className="text-purple-400 font-semibold">"Let’s Connect With Digital Future,"</span> we specialize in custom software, cloud solutions, AI/ML integration, and IT services.
+            <br /><br />
+            Our mission is to build innovative, user-focused solutions that solve real-world challenges and empower businesses to thrive in the digital era.
           </p>
         </section>
 
@@ -202,10 +204,10 @@ export default function Websites() {
       </div>
 
       <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
-        <a href="tel:+7249400874" className="bg-green-600 p-3 rounded-full shadow-lg">
+        <a href="tel:+7249400874" className="bg-green-600 p-5 rounded-full shadow-lg">
           <FiPhoneCall className="text-white text-xl" />
         </a>
-        <a href="https://wa.me/7249400874" target="_blank" rel="noopener noreferrer" className="bg-purple-600 p-3 rounded-full shadow-lg">
+        <a href="https://wa.me/7249400874" target="_blank" rel="noopener noreferrer" className="bg-purple-600 p-5 rounded-full shadow-lg">
           <BsWhatsapp className="text-white text-xl" />
         </a>
       </div>

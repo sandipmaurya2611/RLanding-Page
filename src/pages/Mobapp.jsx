@@ -109,7 +109,7 @@ export default function AppsPage() {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-90 z-50 shadow-md px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-lg font-bold text-white md:hidden">Menu</div>
+          <div className="text-lg font-bold text-white md:hidden"></div>
           <div className="hidden md:flex flex-1 justify-center gap-6">
             <button
               onClick={() => scrollToSection(aboutRef)}
@@ -178,31 +178,31 @@ export default function AppsPage() {
           <div className="md:hidden mt-4 space-y-2">
             <button
               onClick={() => scrollToSection(aboutRef)}
-              className="block w-full text-left text-white hover:text-purple-400 transition"
+              className="block w-full text-middle text-white hover:text-purple-400 transition"
             >
               About Us
             </button>
             <button
               onClick={() => scrollToSection(techRef)}
-              className="block w-full text-left text-white hover:text-purple-400 transition"
+              className="block w-full text-middle text-white hover:text-purple-400 transition"
             >
               Tech Stack
             </button>
             <button
               onClick={() => scrollToSection(appsRef)}
-              className="block w-full text-left text-white hover:text-purple-400 transition"
+              className="block w-full text-middle text-white hover:text-purple-400 transition"
             >
               Apps
             </button>
             <button
               onClick={() => scrollToSection(contactRef)}
-              className="block w-full text-left text-white hover:text-purple-400 transition"
+              className="block w-full text-middle text-white hover:text-purple-400 transition"
             >
               Contact
             </button>
             <a
               href="/"
-              className="block text-left w-full bg-gradient-to-r from-purple-400 to-cyan-400 px-4 py-2 rounded-full text-white font-semibold mt-2 text-center"
+              className="block text-middle w-full bg-gradient-to-r from-purple-400 to-cyan-400 px-4 py-2 rounded-full text-white font-semibold mt-2 text-center"
             >
               Get More Services
             </a>
@@ -227,20 +227,12 @@ export default function AppsPage() {
         </section>
 
         {/* About Section */}
-        <section ref={aboutRef} className="px-6 py-20 text-center">
+       <section ref={aboutRef} className="px-6 py-20 text-center">
           <h3 className="text-3xl font-bold mb-6">About Us</h3>
           <p className="text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            <strong>Rbrickks Technology Pvt. Ltd.</strong>, founded on 13th
-            September 2022 by Mr. Rohan Prashant Kolhe, is a Pune-based IT
-            company committed to connecting people with the digital future.
-            <br />
-            <br />
-            With the tagline{" "}
-            <span className="text-purple-400 font-semibold">
-              "Let’s Connect With Digital Future,"
-            </span>{" "}
-            we specialize in custom software, cloud solutions, AI/ML
-            integration, and IT services.
+            <strong>Rbrickks Technology Pvt. Ltd.</strong>, founded on 13th September 2022 by Mr. Rohan Prashant Kolhe, is a Pune-based IT company committed to connecting people with the digital future. With the tagline <span className="text-purple-400 font-semibold">"Let’s Connect With Digital Future,"</span> we specialize in custom software, cloud solutions, AI/ML integration, and IT services.
+            <br /><br />
+            Our mission is to build innovative, user-focused solutions that solve real-world challenges and empower businesses to thrive in the digital era.
           </p>
         </section>
 
@@ -369,18 +361,10 @@ export default function AppsPage() {
 
       {/* Floating Icons */}
       <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
-        <a
-          href="tel:+7249400874"
-          className="bg-green-600 p-3 rounded-full shadow-lg"
-        >
+        <a href="tel:+7249400874" className="bg-green-600 p-5 rounded-full shadow-lg">
           <FiPhoneCall className="text-white text-xl" />
         </a>
-        <a
-          href="https://wa.me/7249400874"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-purple-600 p-3 rounded-full shadow-lg"
-        >
+        <a href="https://wa.me/7249400874" target="_blank" rel="noopener noreferrer" className="bg-purple-600 p-5 rounded-full shadow-lg">
           <BsWhatsapp className="text-white text-xl" />
         </a>
       </div>
