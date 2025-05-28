@@ -1,241 +1,386 @@
 import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import {
-  FaReact, FaNodeJs, FaAws, FaBug, FaDatabase, FaJava, FaJs, FaFigma,
+  FaMobileAlt,
+  FaAndroid,
+  FaApple,
+  FaReact,
+  FaDatabase,
+  FaTools,
+  FaStar,
 } from "react-icons/fa";
-import {
-  SiTailwindcss, SiMongodb, SiExpress, SiFirebase, SiJest, SiPostman, SiRedux, SiMysql,
-} from "react-icons/si";
 import { FiPhoneCall } from "react-icons/fi";
 import { BsWhatsapp } from "react-icons/bs";
 
-const techItems = [
+const appTechStack = [
   {
-    title: "Programming Languages Used",
-    icons: [FaJava, FaJs, SiMysql],
+    icon: <FaMobileAlt className="text-purple-400 text-3xl mb-4" />,
+    title: "Cross-Platform Development",
+    technologies: ["React Native", "Flutter", "Ionic", "Cordova"],
+    desc: "Build high-performance apps for both Android and iOS using shared codebases.",
   },
   {
-    title: "Frameworks & Libraries",
-    icons: [FaReact, SiRedux, SiTailwindcss],
+    icon: <FaAndroid className="text-green-500 text-3xl mb-4" />,
+    title: "Android Development",
+    technologies: ["Java", "Kotlin", "Jetpack", "Firebase"],
+    desc: "Modern tools and native Android SDKs for fast and responsive apps.",
   },
   {
-    title: "Backend Development Tools",
-    icons: [FaNodeJs, SiExpress, SiPostman],
+    icon: <FaApple className="text-gray-300 text-3xl mb-4" />,
+    title: "iOS Development",
+    technologies: ["Swift", "SwiftUI", "Objective-C", "Core Data"],
+    desc: "Beautifully crafted iOS apps with smooth animations and great UX.",
   },
   {
-    title: "Database Technologies",
-    icons: [SiMongodb, FaDatabase],
+    icon: <FaDatabase className="text-cyan-400 text-3xl mb-4" />,
+    title: "Backend & Database",
+    technologies: ["Firebase", "Supabase", "Node.js", "MongoDB", "SQLite"],
+    desc: "Secure and scalable backend solutions for real-time sync and data storage.",
   },
   {
-    title: "Cloud and Hosting Solutions",
-    icons: [FaAws, SiFirebase],
-  },
-  {
-    title: "Testing & Debugging Tools",
-    icons: [SiJest, FaBug, SiPostman],
-  },
-];
-
-const testimonials = [
-  {
-    title: "Automation in Building Safety and Security",
-    description: "A smart automation system designed to enhance building safety and security through IoT-enabled surveillance, real-time alerts, and access control.",
-    tech: [FaReact, FaNodeJs, SiMongodb],
-  },
-  {
-    title: "Table Booking Software",
-    description: "A restaurant reservation system allowing users to book tables in real-time, manage capacity, and optimize customer experience.",
-    tech: [FaReact, FaJs, SiFirebase],
-  },
-  {
-    title: "Fraud Detection System",
-    description: "An intelligent system for identifying fraudulent patterns using machine learning and rule-based algorithms.",
-    tech: [FaJava, FaDatabase, FaBug],
-  },
-  {
-    title: "Attendance Software for Classes",
-    description: "A biometric and manual attendance tracking platform for academic institutions to streamline student records.",
-    tech: [FaReact, SiRedux, FaNodeJs],
-  },
-  {
-    title: "Hotel App Billing",
-    description: "Comprehensive hotel billing and invoicing app for seamless check-in/check-out and real-time room service billing.",
-    tech: [FaJs, FaFigma, SiPostman],
+    icon: <FaTools className="text-yellow-300 text-3xl mb-4" />,
+    title: "Tools & Deployment",
+    technologies: ["Play Store", "App Store", "TestFlight", "Fastlane", "Expo"],
+    desc: "Seamless app testing, CI/CD, and publishing across multiple platforms.",
   },
 ];
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    message: '',
-  });
+const apps = [
+  {
+    name: "Clothy Cart",
+    url: "https://play.google.com/store/apps/details?id=com.clothycart",
+    category: "E-Commerce",
+    rating: 5,
+    testimonial:
+      "Smart clothing e-commerce app with smooth user experience and fast checkout.",
+    tech: ["Flutter", "Firebase", "Stripe"],
+  },
+  {
+    name: "Angi Clothing",
+    url: "https://play.google.com/store/apps/details?id=app.evlop.angionline",
+    category: "Fashion",
+    rating: 5,
+    testimonial: "Custom clothing store app tailored for fashion lovers.",
+    tech: ["React Native", "Node.js", "MongoDB"],
+  },
+  {
+    name: "Real Estate Investment Office (REIO)",
+    url: "https://play.google.com/store/apps/details?id=com.PropTechCompany.reio",
+    category: "Real Estate",
+    rating: 5,
+    testimonial:
+      "Investment-focused real estate platform with real-time property insights.",
+    tech: ["Kotlin", "Firebase", "Map APIs"],
+  },
+];
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch("http://localhost:5000/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        alert("Message sent successfully!");
-        setFormData({ name: "", phone: "", email: "", message: "" });
-      } else {
-        alert("Failed to send message.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Something went wrong. Please try again later.");
-    }
-  };
-
-  return (
-    <div className="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg w-full">
-      <h2 className="text-2xl font-semibold mb-6 text-purple-400">Send a Message</h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {['name', 'phone', 'email'].map((field) => (
-          <input
-            key={field}
-            type={field === 'email' ? 'email' : 'text'}
-            name={field}
-            value={formData[field]}
-            onChange={handleChange}
-            placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-            className="w-full px-4 py-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 outline-none"
-            required
-          />
-        ))}
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          rows="4"
-          placeholder="Your message..."
-          className="w-full px-4 py-3 bg-gray-700 rounded-md text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 outline-none"
-          required
-        />
-        <button
-          type="submit"
-          className="w-full py-3 bg-gradient-to-r from-purple-600 to-cyan-500 hover:opacity-90 rounded-md text-base sm:text-lg font-medium transition"
-        >
-          Send Message
-        </button>
-      </form>
-    </div>
-  );
-};
-
-export default function SoftwarePage() {
+export default function AppsPage() {
   const aboutRef = useRef(null);
   const techRef = useRef(null);
-  const testimonialsRef = useRef(null);
-  const ContactPage = useRef(null);
+  const appsRef = useRef(null);
+  const contactRef = useRef(null);
+  const form = useRef();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm("service_m8hoob3", "template_i4fc57k", form.current, {
+        publicKey: "1m5aPROiv77M3j6XU",
+      })
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          form.current.reset();
+        },
+        (error) => {
+          console.error("FAILED...", error.text);
+        }
+      );
+  };
 
   const scrollToSection = (ref) => {
     ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setMenuOpen(false);
   };
 
   return (
     <div className="bg-black min-h-screen text-white font-sans relative">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-90 z-50 flex flex-wrap items-center justify-between px-4 sm:px-6 py-4 shadow-md">
-        <div className="flex-1 min-w-full sm:min-w-0 mb-4 sm:mb-0 flex justify-center sm:justify-start"></div>
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 w-full sm:w-auto">
-          <button onClick={() => scrollToSection(aboutRef)} className="text-white hover:text-purple-400 transition text-sm sm:text-base">About Us</button>
-          <button onClick={() => scrollToSection(techRef)} className="text-white hover:text-purple-400 transition text-sm sm:text-base">Technologies</button>
-          <button onClick={() => scrollToSection(testimonialsRef)} className="text-white hover:text-purple-400 transition text-sm sm:text-base">Testimonials</button>
-          <button onClick={() => scrollToSection(ContactPage)} className="text-white hover:text-purple-400 transition text-sm sm:text-base">Contact</button>
+      <nav className="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-90 z-50 shadow-md px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="text-lg font-bold text-white md:hidden">Menu</div>
+          <div className="hidden md:flex flex-1 justify-center gap-6">
+            <button
+              onClick={() => scrollToSection(aboutRef)}
+              className="text-white hover:text-purple-400 transition"
+            >
+              About Us
+            </button>
+            <button
+              onClick={() => scrollToSection(techRef)}
+              className="text-white hover:text-purple-400 transition"
+            >
+              Tech Stack
+            </button>
+            <button
+              onClick={() => scrollToSection(appsRef)}
+              className="text-white hover:text-purple-400 transition"
+            >
+              Apps
+            </button>
+            <button
+              onClick={() => scrollToSection(contactRef)}
+              className="text-white hover:text-purple-400 transition"
+            >
+              Contact
+            </button>
+          </div>
+          <div className="hidden md:block">
+            <a
+              href="/"
+              className="bg-gradient-to-r from-purple-400 to-cyan-400 px-6 py-2 rounded-full text-white font-semibold"
+            >
+              Get More Services
+            </a>
+          </div>
+          <div className="md:hidden">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-white focus:outline-none"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {menuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
-        <div className="flex-1 flex justify-center sm:justify-end w-full sm:w-auto mt-4 sm:mt-0">
-          <a
-            href="/"
-            className="bg-gradient-to-r from-purple-400 to-cyan-400 px-4 sm:px-6 py-2 rounded-full text-white text-sm sm:text-base font-semibold"
-          >
-            Get More Services
-          </a>
-        </div>
+        {menuOpen && (
+          <div className="md:hidden mt-4 space-y-2">
+            <button
+              onClick={() => scrollToSection(aboutRef)}
+              className="block w-full text-left text-white hover:text-purple-400 transition"
+            >
+              About Us
+            </button>
+            <button
+              onClick={() => scrollToSection(techRef)}
+              className="block w-full text-left text-white hover:text-purple-400 transition"
+            >
+              Tech Stack
+            </button>
+            <button
+              onClick={() => scrollToSection(appsRef)}
+              className="block w-full text-left text-white hover:text-purple-400 transition"
+            >
+              Apps
+            </button>
+            <button
+              onClick={() => scrollToSection(contactRef)}
+              className="block w-full text-left text-white hover:text-purple-400 transition"
+            >
+              Contact
+            </button>
+            <a
+              href="/"
+              className="block text-left w-full bg-gradient-to-r from-purple-400 to-cyan-400 px-4 py-2 rounded-full text-white font-semibold mt-2 text-center"
+            >
+              Get More Services
+            </a>
+          </div>
+        )}
       </nav>
 
-      <div className="pt-28 sm:pt-24">
-        {/* Hero Section */}
-        <div className="flex flex-col items-center justify-center text-center py-20 px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 text-transparent bg-clip-text mb-4">
-            Software's
+      {/* Main Content */}
+      <div className="pt-24">
+        {/* Header */}
+        <section className="overflow-visible pb-6 text-center mb-12">
+          <h2 className="text-5xl md:text-5xl font-extrabold leading-[1.3] bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text drop-shadow-sm bg-clip-text mb-4">
+            Mobile App's
           </h2>
-          <p className="text-gray-400 max-w-xl text-sm sm:text-base">
-            Rbrickks Technology is a modern IT solutions provider delivering cutting-edge digital services to transform businesses.
+          <p className="text-gray-400 max-w-xl mx-auto">
+            Rbrickks Technology is a modern IT solutions provider delivering
+            cutting-edge digital services to transform businesses.
           </p>
-          <div className="mt-8 bg-gradient-to-r from-purple-400 to-cyan-400 px-4 sm:px-6 py-2 rounded-full text-white text-sm sm:text-base font-semibold">
+          <div className="mt-6 bg-gradient-to-r from-purple-400 to-cyan-400 px-6 py-2 rounded-full text-white font-semibold inline-block">
             Let’s Connect with the Digital Future
           </div>
-        </div>
+        </section>
 
         {/* About Section */}
-        <section ref={aboutRef} className="px-4 sm:px-6 py-20 text-center">
+        <section ref={aboutRef} className="px-6 py-20 text-center">
           <h3 className="text-3xl font-bold mb-6">About Us</h3>
-          <p className="text-gray-400 max-w-3xl mx-auto leading-relaxed text-sm sm:text-base">
-            <strong>Rbrickks Technology Pvt. Ltd.</strong>, founded on 13th September 2022 by Mr. Rohan Prashant Kolhe, is a Pune-based IT company committed to connecting people with the digital future. With the tagline
-            <span className="text-purple-400 font-semibold"> "Let’s Connect With Digital Future,"</span>
-            we specialize in custom software, cloud solutions, AI/ML integration, and IT services.<br /><br />
-            Our mission is to build innovative, user-focused solutions that solve real-world challenges and empower businesses to thrive in the digital era.
+          <p className="text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <strong>Rbrickks Technology Pvt. Ltd.</strong>, founded on 13th
+            September 2022 by Mr. Rohan Prashant Kolhe, is a Pune-based IT
+            company committed to connecting people with the digital future.
+            <br />
+            <br />
+            With the tagline{" "}
+            <span className="text-purple-400 font-semibold">
+              "Let’s Connect With Digital Future,"
+            </span>{" "}
+            we specialize in custom software, cloud solutions, AI/ML
+            integration, and IT services.
           </p>
         </section>
 
-        {/* Technologies Section */}
-        <section ref={techRef} className="px-4 sm:px-6 py-20 bg-gradient-to-b from-black to-gray-900">
-          <h3 className="text-3xl font-bold text-center mb-10">Technologies</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-            {techItems.map((item) => (
-              <div key={item.title} className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                <h4 className="text-xl font-semibold mb-4 text-lime-300">{item.title}</h4>
-                <div className="flex gap-4 text-3xl text-purple-400 flex-wrap">
-                  {item.icons.map((Icon, i) => (<Icon key={i} />))}
+        {/* Tech Stack */}
+        <section ref={techRef} className="py-20 px-4 md:px-10">
+          <h3 className="text-3xl font-bold text-center mb-12">
+            App Tech Stack
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {appTechStack.map((item, index) => (
+              <div
+                key={index}
+                className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all flex flex-col h-full"
+              >
+                <div className="flex items-center justify-center mb-4">
+                  {item.icon}
+                </div>
+                <h4 className="text-xl font-semibold text-lime-300 text-center mb-2">
+                  {item.title}
+                </h4>
+                <p className="text-gray-300 text-sm text-center mb-4">
+                  {item.desc}
+                </p>
+                <div className="flex flex-wrap justify-center gap-2 text-sm text-purple-400 mt-auto">
+                  {item.technologies.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="bg-gray-700 px-3 py-1 rounded-full"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section ref={testimonialsRef} className="px-4 sm:px-6 py-20">
-          <h3 className="text-3xl font-bold text-center mb-10">Testimonials</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-            {testimonials.map((project, index) => (
-              <div key={index} className="bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h4 className="text-xl text-lime-300 font-semibold mb-2">{project.title}</h4>
-                <p className="text-gray-400 text-sm mb-4">{project.description}</p>
-                <div className="flex gap-3 text-xl text-purple-400">
-                  {project.tech.map((Icon, i) => (<Icon key={i} />))}
+        {/* Apps Section */}
+        <section ref={appsRef} className="py-20">
+          <h3 className="text-3xl font-bold text-center mb-10">
+            Apps We Built!!
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {apps.map((app, index) => (
+              <div
+                key={index}
+                className="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition hover:scale-105"
+              >
+                <h4 className="text-xl font-semibold text-lime-300 mb-1">
+                  {app.name}
+                </h4>
+                <p className="text-sm text-gray-400 italic mb-1">
+                  {app.category}
+                </p>
+                <p className="text-gray-300 text-sm mb-3">{app.testimonial}</p>
+                <div className="flex items-center gap-1 mb-3 text-yellow-400">
+                  {[...Array(app.rating)].map((_, i) => (
+                    <FaStar key={i} />
+                  ))}
                 </div>
+                <div className="flex flex-wrap gap-2 text-sm text-purple-400 mb-4">
+                  {app.tech.map((t, i) => (
+                    <span
+                      key={i}
+                      className="bg-gray-700 px-2 py-1 rounded-full"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href={app.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 text-sm rounded-full font-medium text-white hover:opacity-90 transition"
+                >
+                  View on Play Store
+                </a>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section ref={ContactPage} className="px-4 sm:px-6 py-20">
+        {/* Contact Us Form */}
+        <section ref={contactRef} className="px-4 py-20 bg-gray-900">
           <h3 className="text-3xl font-bold text-center mb-10">Contact Us</h3>
-          <div className="max-w-2xl mx-auto">
-            <ContactForm />
+          <div className="max-w-3xl mx-auto bg-gray-800 rounded-2xl p-8 shadow-lg">
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
+              <input
+                type="text"
+                name="user_name"
+                required
+                placeholder="Your Full Name"
+                className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none"
+              />
+              <input
+                type="email"
+                name="user_email"
+                required
+                placeholder="Email Address"
+                className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none"
+              />
+              <input
+                type="tel"
+                name="user_phone"
+                placeholder="Phone Number"
+                className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none"
+              />
+              <textarea
+                name="message"
+                required
+                placeholder="Your Message"
+                className="w-full px-4 py-3 h-32 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-purple-500 to-cyan-400 px-6 py-3 rounded-full text-white font-semibold hover:opacity-90 transition"
+              >
+                Send Message
+              </button>
+            </form>
           </div>
         </section>
       </div>
 
       {/* Floating Icons */}
-      <div className="fixed bottom-6 right-6 flex flex-col gap-4">
-        <a href="tel:+1234567890" className="bg-green-600 p-3 rounded-full shadow-lg">
+      <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+        <a
+          href="tel:+7249400874"
+          className="bg-green-600 p-3 rounded-full shadow-lg"
+        >
           <FiPhoneCall className="text-white text-xl" />
         </a>
-        <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="bg-purple-600 p-3 rounded-full shadow-lg">
+        <a
+          href="https://wa.me/7249400874"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-purple-600 p-3 rounded-full shadow-lg"
+        >
           <BsWhatsapp className="text-white text-xl" />
         </a>
       </div>
