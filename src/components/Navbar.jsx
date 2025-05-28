@@ -91,28 +91,27 @@ const Navbar = () => {
           >
             Contact
           </a>
-           <Link
-  to="/Software"
-  onClick={() => handleLinkClick("Software")}
-  className="text-white text-sm font-medium bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
->
-  Software
-</Link>
-<Link
-  to="/Webapp"
-  onClick={() => handleLinkClick("Webapp")}
-  className="text-white text-sm font-medium bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
->
-  Web Apps
-</Link>
-<Link
-  to="/Mobapp"
-  onClick={() => handleLinkClick("Mobapp")}
-  className="text-white text-sm font-medium bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
->
-  Mobile Apps
-</Link>
-
+          <Link
+            to="/Software"
+            onClick={() => handleLinkClick("Software")}
+            className="text-white text-sm font-medium bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
+          >
+            Software
+          </Link>
+          <Link
+            to="/Webapp"
+            onClick={() => handleLinkClick("Webapp")}
+            className="text-white text-sm font-medium bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
+          >
+            Web Apps
+          </Link>
+          <Link
+            to="/Mobapp"
+            onClick={() => handleLinkClick("Mobapp")}
+            className="text-white text-sm font-medium bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
+          >
+            Mobile Apps
+          </Link>
 
           {/* Desktop "Get Start" Button */}
           {/* <Link
@@ -173,7 +172,7 @@ const Navbar = () => {
             Web Application
           </Link>
 
-         <Link
+          <Link
             to="/Mobapp"
             onClick={() => handleLinkClick("Mobapp")}
             className="w-fit text-center bg-gradient-to-r from-purple-500 to-cyan-400 px-3 py-1.5 text-sm rounded-full text-white font-medium shadow hover:scale-105 transition-transform
