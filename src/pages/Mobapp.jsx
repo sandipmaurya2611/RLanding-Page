@@ -219,7 +219,7 @@ export default function AppsPage() {
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
             Rbrickks Technology is a modern IT solutions provider delivering
-            cutting-edge digital services to transform businesses.
+            cutting-edge digital services to transform businesses. <strong> Mobile App's , Computer App's</strong>
           </p>
           <div className="mt-6 bg-gradient-to-r from-purple-400 to-cyan-400 px-6 py-2 rounded-full text-white font-semibold inline-block">
             Let’s Connect with the Digital Future
@@ -361,7 +361,7 @@ export default function AppsPage() {
 
       {/* Floating Icons */}
       <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
-        <a href="tel:+7249400874" className="bg-green-600 p-5 rounded-full shadow-lg">
+        <a href="tel:+91 7249400874" className="bg-green-600 p-5 rounded-full shadow-lg">
           <FiPhoneCall className="text-white text-xl" />
         </a>
         <a href="https://wa.me/7249400874" target="_blank" rel="noopener noreferrer" className="bg-purple-600 p-5 rounded-full shadow-lg">
