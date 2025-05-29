@@ -317,7 +317,7 @@ export default function AppsPage() {
           </div>
         </section>
 
-        {/* Contact Us Form */}
+\
         <section ref={contactRef} className="px-4 py-20 bg-gray-900">
           <h3 className="text-3xl font-bold text-center mb-10">Contact Us</h3>
           <div className="max-w-3xl mx-auto bg-gray-800 rounded-2xl p-8 shadow-lg">
