@@ -13,6 +13,7 @@ import Navbar from './components/Navbar'; // or Navbar2 if you're using that
 import Footer from './components/Footer';
 import Webapp from './pages/Webapp';
 import Mobapp from './pages/Mobapp';
+import ScrollToTop from './components/ScrollToTop';
 
 function AppContent() {
   const location = useLocation();
@@ -22,6 +23,7 @@ function AppContent() {
   return (
     <>
       {!hideNavbar && <Navbar />} 
+       <ScrollToTop/>
            <Routes>
         <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />

@@ -33,7 +33,7 @@ const techIcons = {
   JavaScript: <SiJavascript />,
 };
 
-// Import your projects array here
+
 const projects = [
   {
     title: "Lokhande Sai Dental",
@@ -166,10 +166,10 @@ const Portfolio = () => {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
-  useEffect(() => {
+ useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
-
+ 
   return (
     <section className="min-h-screen bg-black text-white px-6 py-16">
       <div className="max-w-7xl mx-auto">
@@ -226,7 +226,6 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Arrow Pagination */}
         <div className="flex justify-center items-center gap-4 mt-6">
           <button
             onClick={goToPrevious}

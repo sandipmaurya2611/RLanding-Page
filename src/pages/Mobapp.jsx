@@ -317,7 +317,7 @@ export default function AppsPage() {
           </div>
         </section>
 
-        {/* Contact Us Form */}
+\
         <section ref={contactRef} className="px-4 py-20 bg-gray-900">
           <h3 className="text-3xl font-bold text-center mb-10">Contact Us</h3>
           <div className="max-w-3xl mx-auto bg-gray-800 rounded-2xl p-8 shadow-lg">
@@ -362,12 +362,12 @@ export default function AppsPage() {
       {/* Floating Icons */}
       <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
         <a href="tel:+91 7249400874" className="bg-green-600 p-5 rounded-full shadow-lg">
-          <FiPhoneCall className="text-white text-xl" />
-        </a>
+       </a>
         <a href="https://wa.me/7249400874" target="_blank" rel="noopener noreferrer" className="bg-purple-600 p-5 rounded-full shadow-lg">
           <BsWhatsapp className="text-white text-xl" />
         </a>
-      </div>
+      </div>     <FiPhoneCall className="text-white text-xl" />
+      
     </div>
   );
 }
