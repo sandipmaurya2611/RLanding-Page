@@ -84,8 +84,8 @@ export default function Websites() {
     e.preventDefault();
 
     emailjs
-      .sendForm('service_m8hoob3', 'template_i4fc57k', form.current, {
-        publicKey: '1m5aPROiv77M3j6XU',
+      .sendForm('service_085m2ou', 'template_rynn9n8', form.current, {
+        publicKey: 'k0NV7Z33eCv9HO8Nv',
       })
       .then(
         () => {
