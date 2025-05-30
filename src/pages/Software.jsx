@@ -1,10 +1,26 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import logo from "/assets/Company logo .gif";
+
 import {
-  FaReact, FaNodeJs, FaAws, FaBug, FaDatabase, FaJava, FaJs, FaFigma,
+  FaReact,
+  FaNodeJs,
+  FaAws,
+  FaBug,
+  FaDatabase,
+  FaJava,
+  FaJs,
+  FaFigma,
 } from "react-icons/fa";
 import {
-  SiTailwindcss, SiMongodb, SiExpress, SiFirebase, SiJest, SiPostman, SiRedux, SiMysql,
+  SiTailwindcss,
+  SiMongodb,
+  SiExpress,
+  SiFirebase,
+  SiJest,
+  SiPostman,
+  SiRedux,
+  SiMysql,
 } from "react-icons/si";
 import { FiPhoneCall, FiMenu, FiX } from "react-icons/fi";
 import { BsWhatsapp } from "react-icons/bs";
@@ -17,24 +33,30 @@ const ContactUs = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm('service_085m2ou', 'template_rynn9n8', form.current, {
-        publicKey: 'k0NV7Z33eCv9HO8Nv',
+      .sendForm("service_085m2ou", "template_rynn9n8", form.current, {
+        publicKey: "k0NV7Z33eCv9HO8Nv",
       })
       .then(
         () => {
-          alert('Thanks for reaching out! We’ll get back to you shortly.');
+          alert("Thanks for reaching out! We’ll get back to you shortly.");
           form.current.reset();
         },
         (error) => {
-          alert('Oops! Something went wrong. Please try again later.');
-          console.log('FAILED...', error.text);
+          alert("Oops! Something went wrong. Please try again later.");
+          console.log("FAILED...", error.text);
         }
       );
   };
 
   return (
-    <form ref={form} onSubmit={sendEmail} className="space-y-6 bg-gray-800 p-8 rounded-xl shadow-lg w-full">
-      <h2 className="text-2xl font-semibold mb-4 text-purple-400">Send a Message</h2>
+    <form
+      ref={form}
+      onSubmit={sendEmail}
+      className="space-y-6 bg-gray-800 p-8 rounded-xl shadow-lg w-full"
+    >
+      <h2 className="text-2xl font-semibold mb-4 text-purple-400">
+        Send a Message
+      </h2>
 
       <input
         type="text"
@@ -86,7 +108,8 @@ const techItems = [
 const testimonials = [
   {
     title: "Automation in Building Security",
-    description: "Smart automation for safety and security with IoT and alerts.",
+    description:
+      "Smart automation for safety and security with IoT and alerts.",
     tech: [FaReact, FaNodeJs, SiMongodb],
   },
   {
@@ -96,12 +119,14 @@ const testimonials = [
   },
   {
     title: "Fraud Detection System",
-    description: "ML-based fraud detection using patterns and rule-based logic.",
+    description:
+      "ML-based fraud detection using patterns and rule-based logic.",
     tech: [FaJava, FaDatabase, FaBug],
   },
   {
     title: "Class Attendance Software",
-    description: "Biometric/manual system to track and report student attendance.",
+    description:
+      "Biometric/manual system to track and report student attendance.",
     tech: [FaReact, SiRedux, FaNodeJs],
   },
   {
@@ -125,34 +150,108 @@ export default function SoftwarePage() {
 
   return (
     <div className="bg-black min-h-screen text-white font-sans relative">
-      {/* Navbar */}
+  
       <nav className="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-90 z-50 shadow-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-          <div className="hidden md:flex w-full items-center">
-            <div className="flex justify-center gap-10 flex-1">
-              <button onClick={() => scrollToSection(aboutRef)} className="hover:text-purple-400">About Us</button>
-              <button onClick={() => scrollToSection(techRef)} className="hover:text-purple-400">Technologies</button>
-              <button onClick={() => scrollToSection(testimonialsRef)} className="hover:text-purple-400">Testimonials</button>
-              <button onClick={() => scrollToSection(contactRef)} className="hover:text-purple-400">Contact</button>
-            </div>
-            <a href="/" className="ml-auto bg-gradient-to-r from-purple-400 to-cyan-400 px-6 py-2 rounded-full text-white font-semibold">
+          {/* Logo - always visible on left */}
+          <div className="flex items-center">
+                <img src={logo} alt="Logo" className="w-8 h-8" />
+
+          </div>
+
+          {/* Desktop menu */}
+          <div className="hidden md:flex flex-1 items-center justify-center gap-10">
+            <button
+              onClick={() => scrollToSection(aboutRef)}
+              className="hover:text-purple-400"
+            >
+              About Us
+            </button>
+            <button
+              onClick={() => scrollToSection(techRef)}
+              className="hover:text-purple-400"
+            >
+              Technologies
+            </button>
+            <button
+              onClick={() => scrollToSection(testimonialsRef)}
+              className="hover:text-purple-400"
+            >
+              Testimonials
+            </button>
+            <button
+              onClick={() => scrollToSection(contactRef)}
+              className="hover:text-purple-400"
+            >
+              Contact
+            </button>
+          </div>
+
+          {/* Desktop "Get More Services" button */}
+          <div className="hidden md:flex">
+            <a
+              href="/"
+              className="bg-gradient-to-r from-purple-400 to-cyan-400 px-6 py-2 rounded-full text-white font-semibold"
+            >
               Get More Services
             </a>
           </div>
-          <div className="md:hidden flex justify-end w-full">
-            <button onClick={() => setMenuOpen(!menuOpen)} className="text-white">
+
+          {/* Mobile hamburger menu button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-white"
+            >
               {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
           </div>
         </div>
 
+        {/* Mobile menu items */}
         {menuOpen && (
           <div className="md:hidden bg-gray-900 px-6 py-4 flex flex-col gap-4">
-            <button onClick={() => scrollToSection(aboutRef)} className="hover:text-purple-400">About Us</button>
-            <button onClick={() => scrollToSection(techRef)} className="hover:text-purple-400">Technologies</button>
-            <button onClick={() => scrollToSection(testimonialsRef)} className="hover:text-purple-400">Testimonials</button>
-            <button onClick={() => scrollToSection(contactRef)} className="hover:text-purple-400">Contact</button>
-            <a href="/" className="mt-2 bg-gradient-to-r from-purple-400 to-cyan-400 px-4 py-2 rounded-full text-center text-white font-semibold">
+            <button
+              onClick={() => {
+                scrollToSection(aboutRef);
+                setMenuOpen(false);
+              }}
+              className="hover:text-purple-400 text-left"
+            >
+              About Us
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection(techRef);
+                setMenuOpen(false);
+              }}
+              className="hover:text-purple-400 text-left"
+            >
+              Technologies
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection(testimonialsRef);
+                setMenuOpen(false);
+              }}
+              className="hover:text-purple-400 text-left"
+            >
+              Testimonials
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection(contactRef);
+                setMenuOpen(false);
+              }}
+              className="hover:text-purple-400 text-left"
+            >
+              Contact
+            </button>
+            <a
+              href="/"
+              className="mt-2 bg-gradient-to-r from-purple-400 to-cyan-400 px-4 py-2 rounded-full text-center text-white font-semibold"
+              onClick={() => setMenuOpen(false)}
+            >
               Get More Services
             </a>
           </div>
@@ -160,18 +259,36 @@ export default function SoftwarePage() {
       </nav>
 
       <div className="pt-24">
-       <section className="text-center mb-12">
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 text-transparent bg-clip-text mb-4">Software's</h2>
-          <p className="text-gray-400 max-w-xl mx-auto">Rbrickks Technology is a modern IT solutions provider delivering cutting-edge digital services to transform businesses.</p>
-          <div className="mt-6 bg-gradient-to-r from-purple-400 to-cyan-400 px-6 py-2 rounded-full text-white font-semibold inline-block">Let’s Connect with the Digital Future</div>
-       </section>
+        <section className="text-center mb-12">
+          <h2 className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 text-transparent bg-clip-text mb-4">
+            Software's
+          </h2>
+          <p className="text-gray-400 max-w-xl mx-auto">
+            Rbrickks Technology is a modern IT solutions provider delivering
+            cutting-edge digital services to transform businesses.
+          </p>
+          <div className="mt-6 bg-gradient-to-r from-purple-400 to-cyan-400 px-6 py-2 rounded-full text-white font-semibold inline-block">
+            Let’s Connect with the Digital Future
+          </div>
+        </section>
 
-         <section ref={aboutRef} className="px-6 py-20 text-center">
+        <section ref={aboutRef} className="px-6 py-20 text-center">
           <h3 className="text-3xl font-bold mb-6">About Us</h3>
           <p className="text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            <strong>Rbrickks Technology Pvt. Ltd.</strong>, founded on 13th September 2022 by Mr. Rohan Prashant Kolhe, is a Pune-based IT company committed to connecting people with the digital future. With the tagline <span className="text-purple-400 font-semibold">"Let’s Connect With Digital Future,"</span> we specialize in custom software, cloud solutions, AI/ML integration, and IT services.
-            <br /><br />
-            Our mission is to build innovative, user-focused solutions that solve real-world challenges and empower businesses to thrive in the digital era.
+            <strong>Rbrickks Technology Pvt. Ltd.</strong>, founded on 13th
+            September 2022 by Mr. Rohan Prashant Kolhe, is a Pune-based IT
+            company committed to connecting people with the digital future. With
+            the tagline{" "}
+            <span className="text-purple-400 font-semibold">
+              "Let’s Connect With Digital Future,"
+            </span>{" "}
+            we specialize in custom software, cloud solutions, AI/ML
+            integration, and IT services.
+            <br />
+            <br />
+            Our mission is to build innovative, user-focused solutions that
+            solve real-world challenges and empower businesses to thrive in the
+            digital era.
           </p>
         </section>
 
@@ -179,10 +296,17 @@ export default function SoftwarePage() {
           <h3 className="text-3xl font-bold text-center mb-10">Technologies</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {techItems.map((item) => (
-              <div key={item.title} className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                <h4 className="text-xl font-semibold mb-4 text-lime-300">{item.title}</h4>
+              <div
+                key={item.title}
+                className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+              >
+                <h4 className="text-xl font-semibold mb-4 text-lime-300">
+                  {item.title}
+                </h4>
                 <div className="flex gap-4 text-3xl text-purple-400 flex-wrap">
-                  {item.icons.map((Icon, i) => <Icon key={i} />)}
+                  {item.icons.map((Icon, i) => (
+                    <Icon key={i} />
+                  ))}
                 </div>
               </div>
             ))}
@@ -194,10 +318,16 @@ export default function SoftwarePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((project, i) => (
               <div key={i} className="bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h4 className="text-xl text-lime-300 font-semibold mb-2">{project.title}</h4>
-                <p className="text-gray-400 text-sm mb-4">{project.description}</p>
+                <h4 className="text-xl text-lime-300 font-semibold mb-2">
+                  {project.title}
+                </h4>
+                <p className="text-gray-400 text-sm mb-4">
+                  {project.description}
+                </p>
                 <div className="flex gap-3 text-xl text-purple-400">
-                  {project.tech.map((Icon, j) => <Icon key={j} />)}
+                  {project.tech.map((Icon, j) => (
+                    <Icon key={j} />
+                  ))}
                 </div>
               </div>
             ))}
@@ -212,13 +342,29 @@ export default function SoftwarePage() {
         </section>
       </div>
 
-      {/* Floating contact icons */}
-      <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
-        <a href="tel:+91 7249400874" className="bg-green-600 p-5 rounded-full shadow-lg">
-          <FiPhoneCall className="text-white text-xl" />
+      {/* floating icons */}
+      <div
+        className="fixed flex flex-col gap-3 z-[9999] p-0"
+        style={{
+          bottom: "calc(2.5rem + env(safe-area-inset-bottom, 0px))",
+          right: "calc(1rem + env(safe-area-inset-right, 0px))",
+        }}
+      >
+        <a
+          href="tel:+917249400874"
+          className="bg-purple-600 p-3 rounded-full shadow-md hover:scale-110 transition transform-gpu"
+          aria-label="Call phone"
+        >
+          <FiPhoneCall className="text-white text-2xl md:text-3xl" />
         </a>
-        <a href="https://wa.me/7249400874" target="_blank" rel="noopener noreferrer" className="bg-purple-600 p-5 rounded-full shadow-lg">
-          <BsWhatsapp className="text-white text-xl" />
+        <a
+          href="https://wa.me/917249400874"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-500 p-3 rounded-full shadow-md hover:scale-110 transition transform-gpu"
+          aria-label="WhatsApp chat"
+        >
+          <BsWhatsapp className="text-white text-2xl md:text-3xl" />
         </a>
       </div>
     </div>
