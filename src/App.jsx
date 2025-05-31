@@ -14,6 +14,10 @@ import Footer from './components/Footer';
 import Webapp from './pages/Webapp';
 import Mobapp from './pages/Mobapp';
 import ScrollToTop from './components/ScrollToTop';
+import Services from './pages/Service';
+import Service from './pages/Service';
+import ServiceDetails from './pages/ServiceDetails';
+import Career from './pages/Career';
 
 function AppContent() {
   const location = useLocation();
@@ -33,6 +37,9 @@ function AppContent() {
         <Route path="/Software" element={<Software />} />
          <Route path="/Webapp" element={<Webapp />} />
          <Route path="/Mobapp" element={<Mobapp />} />
+         <Route path="/Service" element={<Service/>} />
+         <Route path="/ServiceDetails" element={<ServiceDetails/>} />
+         <Route path="/Career" element={<Career/>} />
       </Routes>
       <Footer />
     </>
