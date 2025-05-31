@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 import Webapp from './pages/Webapp';
 import Mobapp from './pages/Mobapp';
 import ScrollToTop from './components/ScrollToTop';
+import MainHome from './pages/MainHome';
 
 function AppContent() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function AppContent() {
         <Route path="/Software" element={<Software />} />
          <Route path="/Webapp" element={<Webapp />} />
          <Route path="/Mobapp" element={<Mobapp />} />
+        <Route path="/MainHome" element={<MainHome />} />
       </Routes>
       <Footer />
     </>
