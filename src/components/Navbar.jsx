@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import logo from "/assets/Company logo .gif";
 import { Link } from "react-router-dom";
+import logo from "/assets/Company logo .gif";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,35 +8,35 @@ const Navbar = () => {
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
-    setIsOpen(false); // Close mobile menu on click
+    setIsOpen(false);
   };
 
   const getLinkClass = (link) =>
-    `text-sm transition ${
+    `text-sm font-medium transition duration-300 ${
       activeLink === link
-        ? "text-purple-400 font-semibold"
-        : "text-white hover:text-purple-400"
+        ? "text-purple-600 border-b-2 border-purple-600"
+        : "text-gray-700 hover:text-purple-600"
     }`;
 
   return (
-    <nav className="bg-black text-white fixed top-0 left-0 right-0 z-50 shadow-md">
+    <nav className="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img src={logo} alt="Logo" className="w-8 h-8" />
-          <span className="text-lg font-bold text-yellow-300">
+          <img src={logo} alt="Logo" className="w-10 h-10 object-contain" />
+          <span className="text-xl font-bold text-purple-700">
             Rbrickks Technology
           </span>
         </div>
 
-        {/* Hamburger Menu for Mobile */}
+        {/* Hamburger Button */}
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="focus:outline-none"
+            className="text-gray-700 focus:outline-none"
           >
             <svg
-              className="w-6 h-6 text-white"
+              className="w-6 h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -61,135 +61,50 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Navigation Links - Desktop */}
-        <div className="hidden md:flex items-center space-x-6">
-          <a
-            href="/Home"
-            onClick={() => handleLinkClick("Home")}
-            className={getLinkClass("Home")}
-          >
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-8">
+          <Link to="/Home" onClick={() => handleLinkClick("Home")} className={getLinkClass("Home")}>
             Home
-          </a>
-          <a
-            href="/Portfolio"
-            onClick={() => handleLinkClick("Portfolio")}
-            className={getLinkClass("Portfolio")}
-          >
+          </Link>
+          <Link to="/About" onClick={() => handleLinkClick("About")} className={getLinkClass("About")}>
+            About
+          </Link>
+          <Link to="/Service" onClick={() => handleLinkClick("Service")} className={getLinkClass("Service")}>
+            Service
+          </Link>
+          <Link to="/Portfolio" onClick={() => handleLinkClick("Portfolio")} className={getLinkClass("Portfolio")}>
             Portfolio
-          </a>
-          <a
-            href="/Testimonials"
-            onClick={() => handleLinkClick("Testimonials")}
-            className={getLinkClass("Testimonials")}
-          >
+          </Link>
+          <Link to="/Testimonials" onClick={() => handleLinkClick("Testimonials")} className={getLinkClass("Testimonials")}>
             Testimonials
-          </a>
-          <a
-            href="/ContactPage"
-            onClick={() => handleLinkClick("ContactPage")}
-            className={getLinkClass("ContactPage")}
-          >
+          </Link>
+          <Link to="/ContactPage" onClick={() => handleLinkClick("ContactPage")} className={getLinkClass("ContactPage")}>
             Contact
-          </a>
-          <Link
-            to="/Software"
-            onClick={() => handleLinkClick("Software")}
-            className="text-white text-sm font-medium bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
-          >
-            Software
           </Link>
-          <Link
-            to="/Webapp"
-            onClick={() => handleLinkClick("Webapp")}
-            className="text-white text-sm font-medium bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
-          >
-            Web Apps
-          </Link>
-          <Link
-            to="/Mobapp"
-            onClick={() => handleLinkClick("Mobapp")}
-            className="text-white text-sm font-medium bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
-          >
-            Mobile Apps
-          </Link>
-
-          {/* Desktop "Get Start" Button */}
-          {/* <Link
-            to=""
-            onClick={() => handleLinkClick("MoreServices")}
-            className="text-white text-sm font-medium bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
-          >
-            Get Start
-          </Link> */}
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden px-4 pb-4 flex flex-col items-center space-y-4 bg-black">
-          <a
-            href="/Home"
-            onClick={() => handleLinkClick("Home")}
-            className={getLinkClass("Home")}
-          >
+        <div className="md:hidden bg-white px-4 pb-4 space-y-2 shadow-md">
+          <Link to="/Home" onClick={() => handleLinkClick("Home")} className={getLinkClass("Home")}>
             Home
-          </a>
-          <a
-            href="/Portfolio"
-            onClick={() => handleLinkClick("Portfolio")}
-            className={getLinkClass("Portfolio")}
-          >
+          </Link>
+          <Link to="/About" onClick={() => handleLinkClick("About")} className={getLinkClass("About")}>
+            About
+          </Link>
+          <Link to="/Service" onClick={() => handleLinkClick("Service")} className={getLinkClass("Service")}>
+            Service
+          </Link>
+          <Link to="/Portfolio" onClick={() => handleLinkClick("Portfolio")} className={getLinkClass("Portfolio")}>
             Portfolio
-          </a>
-          <a
-            href="/Testimonials"
-            onClick={() => handleLinkClick("Testimonials")}
-            className={getLinkClass("Testimonials")}
-          >
+          </Link>
+          <Link to="/Testimonials" onClick={() => handleLinkClick("Testimonials")} className={getLinkClass("Testimonials")}>
             Testimonials
-          </a>
-          <a
-            href="/ContactPage"
-            onClick={() => handleLinkClick("ContactPage")}
-            className={getLinkClass("ContactPage")}
-          >
+          </Link>
+          <Link to="/ContactPage" onClick={() => handleLinkClick("ContactPage")} className={getLinkClass("ContactPage")}>
             Contact
-          </a>
-          <Link
-            to="/Software"
-            onClick={() => handleLinkClick("Software")}
-            className="w-fit text-center bg-gradient-to-r from-purple-500 to-cyan-400 px-3 py-1.5 text-sm rounded-full text-white font-medium shadow hover:scale-105 transition-transform
-"
-          >
-            Software
           </Link>
-          <Link
-            to="/Webapp"
-            onClick={() => handleLinkClick("Web application")}
-            className="w-fit text-center bg-gradient-to-r from-purple-500 to-cyan-400 px-3 py-1.5 text-sm rounded-full text-white font-medium shadow hover:scale-105 transition-transform
-"
-          >
-            Web Application
-          </Link>
-
-          <Link
-            to="/Mobapp"
-            onClick={() => handleLinkClick("Mobapp")}
-            className="w-fit text-center bg-gradient-to-r from-purple-500 to-cyan-400 px-3 py-1.5 text-sm rounded-full text-white font-medium shadow hover:scale-105 transition-transform
-"
-          >
-            Mobile Apps
-          </Link>
-
-          {/* Mobile "Get Start" Button */}
-          {/* <Link
-            to=""
-            onClick={() => handleLinkClick("MoreServices")}
-            className="w-fit text-center bg-gradient-to-r from-purple-500 to-cyan-400 px-3 py-1.5 text-sm rounded-full text-white font-medium shadow hover:scale-105 transition-transform
-"
-          >
-            Get Start
-          </Link> */}
         </div>
       )}
     </nav>
